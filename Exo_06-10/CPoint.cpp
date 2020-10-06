@@ -22,10 +22,15 @@ CPoint::CPoint(float fltX, float fltY, char cChar)
 
 
 //Fonctions membres
-void CPoint::affiche() const
+void CPoint::abscisse() const
 {
-	cout << "Les coordonnees X et Y du point " << get_cChar() << " sont : " << endl;
+	cout << "Les coordonnees X  point " << get_cChar() << " sont : " << endl;
 	cout << "X : " << get_fltX() << endl;
+}
+
+void CPoint::ordonnee() const
+{
+	cout << "Les coordonnees Y  point " << get_cChar() << " sont : " << endl;
 	cout << "Y : " << get_fltY() << endl;
 }
 

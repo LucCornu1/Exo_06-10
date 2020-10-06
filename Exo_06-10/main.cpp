@@ -12,7 +12,8 @@ int main()
 
 	CPoint ptA;
 
-	ptA.affiche();
+	ptA.abscisse();
+	ptA.ordonnee();
 
 
 	cout << "Entrez la coordonnee pour X :" << endl;
@@ -24,9 +25,10 @@ int main()
 	cout << "Entrez le nom du point : " << endl;
 	cin >> c_Char;
 
-	ptA.deplace(flt_X, flt_X, c_Char);
+	ptA.deplace(flt_X, flt_Y, c_Char);
 
-	ptA.affiche();
+	ptA.abscisse();
+	ptA.ordonnee();
 
 	return 0;
 }

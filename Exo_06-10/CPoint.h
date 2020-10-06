@@ -16,7 +16,8 @@ public:
 
 
 	//Fonctions membres
-	void affiche() const;
+	void abscisse() const;
+	void ordonnee() const;
 
 	void deplace(float, float, char);
 
