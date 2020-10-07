@@ -19,8 +19,14 @@ public:
 	void abscisse() const;
 	void ordonnee() const;
 
-	void deplace(float, float, char);
+	void deplace(float X, float Y, char Name);
 
+	//Exerecice 64
+	CPoint homotetie(CPoint Origine, float k);
+
+	CPoint rotation(CPoint Origine, float angle);
+
+	void polaire() const;
 
 	//Assesseur
 	float get_fltX() const;

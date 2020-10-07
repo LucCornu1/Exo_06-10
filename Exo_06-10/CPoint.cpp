@@ -1,7 +1,11 @@
 #include "CPoint.h"
 #include <iostream>
+#include <math.h>
 
 using namespace std;
+
+const float PI = 3.14159265359;
+
 
 //Constructeur
 CPoint::CPoint()
@@ -40,6 +44,74 @@ void CPoint::deplace(float fltX, float fltY, char cChar)
 	this->m_fltY += fltY;
 
 	this->m_cChar = cChar;
+}
+
+CPoint CPoint::homotetie(CPoint ptO, float k)
+{
+	CPoint pt(0, 0, 'B');
+
+	if (ptO.m_fltX == 0 && ptO.m_fltY == 0)
+	{
+		pt.m_fltX = this->m_fltX * k;
+		pt.m_fltY = this->m_fltY * k;
+	}
+	else {
+		pt.m_fltX = (this->m_fltX - ptO.m_fltX) * k + ptO.m_fltX;
+		pt.m_fltY = (this->m_fltY - ptO.m_fltY) * k + ptO.m_fltY;
+	}
+
+	return pt;
+}
+
+CPoint CPoint::rotation(CPoint ptO, float flt_Angle)
+{
+	CPoint pt(0, 0, 'C');
+	while (flt_Angle >= 360)
+	{
+		flt_Angle -= 360;
+	}
+
+	pt.m_fltX = cos(flt_Angle * PI/180) * (this->m_fltX - ptO.m_fltX) * sin(flt_Angle * PI/180) * (this->m_fltY - ptO.m_fltY) + ptO.m_fltX;
+	pt.m_fltY = sin(flt_Angle * PI/180) * (this->m_fltX - ptO.m_fltX) * cos(flt_Angle * PI/180) * (this->m_fltY - ptO.m_fltY) + ptO.m_fltY;
+
+	return pt;
+}
+
+void CPoint::polaire() const
+{
+
+	float Rho = sqrt((this->m_fltX * this->m_fltX) + (this->m_fltY * this->m_fltY)); //Racine carré de Pythagore
+	float Theta;
+
+	
+	if (this->m_fltX == 0.0)
+	{
+		if (this->m_fltY < 0.0)
+		{
+			Theta = (3 * PI) / 2;
+		}
+		else {
+			Theta = PI / 2;
+		}
+	}
+	else if (this->m_fltX < 0.0)
+	{
+		Theta = atan(this->m_fltY / this->m_fltX) + PI;
+	}
+	else {
+		if (this->m_fltY < 0.0)
+		{
+			Theta = atan(this->m_fltY / this->m_fltX) + 2*PI;
+		}
+		else {
+			Theta = atan(this->m_fltY / this->m_fltX);
+		}
+	}
+
+
+	cout << "Les coordonnees polaire du point sont : " << endl;
+	cout << "Rho = " << Rho << endl;
+	cout << "Theta = " << Theta/PI * 180 << " Deg" << endl;
 }
 
 
